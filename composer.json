@@ -1,0 +1,21 @@
+{
+    "name": "gr421nidan/pop-it-mvc",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "gr421nidan",
+            "email": "nikushkina.dasha@yandex.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4 | ^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "core/Src/",
+            "": "app/"
+        }
+    }
+}
