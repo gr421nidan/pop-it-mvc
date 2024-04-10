@@ -5,29 +5,68 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pop it MVC</title>
+    <link rel="stylesheet" href="/pop-it-mvc/public/css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <title>Деканат</title>
 </head>
 <body>
-<header>
-    <nav>
-        <a href="<?= app()->route->getUrl('/hello') ?>">Главная</a>
-        <?php
-        if (!app()->auth::check()):
-            ?>
-            <a href="<?= app()->route->getUrl('/login') ?>">Вход</a>
-            <a href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
-        <?php
-        else:
-            ?>
-            <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
-        <?php
-        endif;
+<?php
+if (!app()->auth::check()):
+    ?>
+    <header>
+        <nav>
+            <div class="nav">
+                <h3><a href="<?= app()->route->getUrl('/hello') ?>" class="logo">Деканат</a></h3>
+                <button class="button_nav"><a href="<?= app()->route->getUrl('/login') ?>" class="button_nav_link">Вход</a></button>
+            </div>
+
+        </nav>
+    </header>
+    <main>
+        <?= $content ?? '' ?>
+
+    </main>
+<?php
+else:
+    if (app()->auth::checkRole()):
         ?>
-    </nav>
-</header>
-<main>
-    <?= $content ?? '' ?>
-</main>
+        <header>
+            <nav>
+                <div class="nav">
+                    <h3><a href="<?= app()->route->getUrl('/hello') ?>" class="logo">Деканат</a></h3>
+                    <button class="button_nav"><a href="<?= app()->route->getUrl('/logout') ?>" class="button_nav_link">Выход</a></button>
+                </div>
+
+            </nav>
+        </header>
+        <main>
+            <?= $content ?? '' ?>
+        </main>
+    <?php
+    else:
+        ?>
+        <header>
+            <nav class="nav_employees">
+                <h3><a href="<?= app()->route->getUrl('/hello') ?>" class="logo">Деканат</a></h3>
+                <a href="" class="nav_link">Успеваемость</a>
+                <a href="" class="nav_link">Личный кабинет</a>
+                <a href="" class="nav_link">Группы</a>
+                <a href="" class="nav_link">Дисциплины</a>
+                <a href="" class="nav_link">Студенты</a>
+                <button class="button_nav"><a href="<?= app()->route->getUrl('/logout') ?>" class="button_nav_link">Выход</a></button>
+            </nav>
+        </header>
+        <main>
+            <?= $content ?? '' ?>
+        </main>
+    <?php
+    endif;
+    ?>
+
+<?php
+endif;
+?>
 
 </body>
 </html>

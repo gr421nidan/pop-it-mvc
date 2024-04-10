@@ -1,0 +1,106 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #f6f6f6;
+    font-family: Montserrat, serif;
+}
+nav{
+    background-color: #f1f0f0;
+
+}
+.nav{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0 65px;
+    justify-content: space-between;
+}
+.logo{
+    text-decoration: none;
+    color: black;
+}
+.button_nav{
+    width: 130px;
+    height: 40px;
+    border-color: #18A0FB;
+    border-radius: 5px;
+}
+.button_nav_link{
+    text-decoration: none;
+    color: #18A0FB;
+}
+.nav_employees{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0 65px;
+    justify-content: space-between;
+}
+.nav_link{
+    color: #18A0FB;
+}
+
+
+.content_main_guest {
+    display: flex;
+    flex-direction: row;
+    gap: 214px;
+    margin: 80px 80px;
+
+}
+
+.image {
+    margin-right: 20px;
+}
+
+.text_info{
+    margin-top: 145px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.button_add{
+    width: 130px;
+    height: 40px;
+    border-color: #18A0FB;
+    border-radius: 5px;
+}
+.button_add_link{
+    text-decoration: none;
+    color: #18A0FB;
+}
+
+.content_main_admin{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 80px;
+    gap: 210px;
+}
+.add_employee{
+    display: flex;
+    flex-direction: column;
+    gap: 160px;
+}
+.add_employee_info{
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.add_new_data{
+    display: flex;
+    flex-direction: column;
+    gap: 65px;
+}
+.add_new_data_info{
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
