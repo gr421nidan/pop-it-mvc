@@ -57,5 +57,14 @@ class Auth
         Session::clear('id');
         return true;
     }
+    //Проверка, то что роль пользователя-админ
+    public static function checkRole(): bool
+    {
+        $userRole = User::where('id', '=', $_SESSION['id'])->first()->id_role;
+
+        if ($userRole === 1) return true;
+        else return false;
+    }
+
 
 }
