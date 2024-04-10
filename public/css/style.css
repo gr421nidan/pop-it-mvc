@@ -104,3 +104,51 @@ nav{
     flex-direction: column;
     gap: 28px;
 }
+
+
+.login_content{
+    display: block;
+    margin: 120px auto;
+    background-color: #ffffff;
+    width: 787px;
+    height: 473px;
+    padding: 80px;
+    border: 1px solid black;
+}
+.login_content_block{
+    display: flex;
+    flex-direction: column;
+    gap: 54px;
+    text-align: center;
+}
+.button_login{
+    width: 130px;
+    height: 40px;
+    background-color: #18A0FB;
+    border-radius: 5px;
+    border-color: #18A0FB;
+    color: white;
+
+}
+.field_login{
+    width: 625px;
+    height: 50px;
+    padding: 10px;
+
+}
+.form_login{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+}
+
+.message{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background-color: #18A0FB;
+    width: 400px;
+    border-radius: 5px;
+    color: white;
+}
