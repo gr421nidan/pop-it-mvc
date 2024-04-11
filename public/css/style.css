@@ -324,3 +324,42 @@ nav{
     flex-direction: column;
     gap: 60px;
 }
+
+
+.students_content{
+    padding: 120px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 88px;
+}
+.students_title{
+    font-size: 48px;
+}
+.list_students{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+li{
+    list-style: none;
+}
+
+.counter{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+    padding: 20px;
+    text-align: center;
+
+}
+.student_in_list{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+}
+a{
+    color: #18A0FB;
+    text-decoration: none;
+}
