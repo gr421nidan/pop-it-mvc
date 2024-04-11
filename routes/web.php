@@ -6,8 +6,8 @@ Route::add('GET', '/hello', [Controller\Site::class, 'hello']);
 Route::add(['GET', 'POST'], '/addEmployees', [Controller\Admin::class, 'addEmployees'])->middleware('auth', 'role');
 Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login']);
 Route::add('GET', '/logout', [Controller\Site::class, 'logout']);
-Route::add(['GET', 'POST'],'/addStudents', [Controller\Employees::class, 'addStudents'])->middleware('auth');
-Route::add(['GET', 'POST'],'/addGroup', [Controller\Employees::class, 'addGroup'])->middleware('auth');
-Route::add(['GET', 'POST'],'/addDiscipline', [Controller\Employees::class, 'addDiscipline'])->middleware('auth');
+Route::add(['GET', 'POST'],'/addStudents', [Controller\Employees::class, 'addStudents'])->middleware('auth', 'roleEmployees');
+Route::add(['GET', 'POST'],'/addGroup', [Controller\Employees::class, 'addGroup'])->middleware('auth', 'roleEmployees');
+Route::add(['GET', 'POST'],'/addDiscipline', [Controller\Employees::class, 'addDiscipline'])->middleware('auth', 'roleEmployees');
 
 //->middleware('auth')
