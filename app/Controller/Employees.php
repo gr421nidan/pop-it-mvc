@@ -46,4 +46,9 @@ class Employees
 
         return new View('employees.disciplines');
     }
+    public function gradeStudents(Request $request): string
+    {
+
+        return new View('employees.gradeStudents');
+    }
 }

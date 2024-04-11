@@ -13,5 +13,6 @@ Route::add('GET','/cabinet', [Controller\Employees::class, 'cabinet'])->middlewa
 Route::add('GET','/students', [Controller\Employees::class, 'students'])->middleware('auth', 'roleEmployees');
 Route::add('GET','/groups', [Controller\Employees::class, 'groups'])->middleware('auth', 'roleEmployees');
 Route::add('GET','/disciplines', [Controller\Employees::class, 'disciplines'])->middleware('auth', 'roleEmployees');
+Route::add('GET','/gradeStudents', [Controller\Employees::class, 'gradeStudents'])->middleware('auth', 'roleEmployees');
 
 //->middleware('auth')
