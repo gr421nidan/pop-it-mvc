@@ -3,7 +3,7 @@ if (!app()->auth::check()):
     ?>
     <div class="content_main_guest">
         <img src="/pop-it-mvc/public/image/main_guest.jpg" class="image" alt="Изображение">
-        <div class="text_info">
+        <div class="text_info_main">
             <h2 class="text">Вы наш сотрудник?</h2>
             <p class="text">Авторизовывайтесь!</p>
         </div>
