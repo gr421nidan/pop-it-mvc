@@ -152,3 +152,103 @@ nav{
     border-radius: 5px;
     color: white;
 }
+
+
+.add_employees_content{
+    display: block;
+    margin: 120px auto;
+    background-color: #ffffff;
+    width: 787px;
+    height: 473px;
+    padding: 80px;
+    border: 1px solid black;
+}
+.add_employees_content_block{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+}
+.button_add_employees{
+    width: 182px;
+    height: 55px;
+    background-color: #18A0FB;
+    border-radius: 5px;
+    border-color: #18A0FB;
+    color: white;
+
+}
+.field_add_employees{
+    width: 342px;
+    height: 55px;
+    padding: 10px;
+
+}
+.form_add_employees{
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+    align-items: center;
+}
+.fields_form{
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+}
+
+
+.add_students_content{
+    display: block;
+    margin: 120px auto;
+    background-color: #ffffff;
+    width: 873px;
+    height: 796px;
+    padding: 80px;
+    border: 1px solid black;
+}
+.add_students_content_block{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+}
+.button_add_student{
+    width: 182px;
+    height: 55px;
+    background-color: #18A0FB;
+    border-radius: 5px;
+    border-color: #18A0FB;
+    color: white;
+
+}
+.field_add_student{
+    width: 693px;
+    height: 55px;
+    padding: 10px;
+
+}
+.form_add_students{
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+    align-items: center;
+}
+.fields_form_add_students{
+    display: flex;
+    flex-direction: column;
+    gap: 33px;
+}
+
+.field_add_student_small{
+    width: 332px;
+    height: 55px;
+    padding: 10px;
+
+}
+
+.small_fields_row{
+    display: flex;
+    flex-direction: row;
+    gap: 27px;
+}
+

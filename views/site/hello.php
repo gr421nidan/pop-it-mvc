@@ -32,7 +32,7 @@ else:
                     <h1>Добавьте новые данные</h1>
                     <div class="add_new_data_info">
                         <p>Добавьте нового студента</p>
-                        <button class="button_add"><a href="<?= app()->route->getUrl('') ?>" class="button_add_link">Добавить</a></button>
+                        <button class="button_add"><a href="<?= app()->route->getUrl('/addStudents') ?>" class="button_add_link">Добавить</a></button>
                     </div>
                     <div class="add_new_data_info">
                         <p>Добавьте новую группу</p>
