@@ -7,6 +7,9 @@ body{
     background: #f6f6f6;
     font-family: Montserrat, serif;
 }
+button, input{
+    font-family: Montserrat, serif;
+}
 nav{
     background-color: #f1f0f0;
 
@@ -250,5 +253,43 @@ nav{
     display: flex;
     flex-direction: row;
     gap: 27px;
+}
+
+
+.add_group_content{
+    display: block;
+    margin: 120px auto;
+    background-color: #ffffff;
+    width: 787px;
+    height: 473px;
+    padding: 100px;
+    border: 1px solid black;
+}
+.add_group_content_block{
+    display: flex;
+    flex-direction: column;
+    gap: 54px;
+    text-align: center;
+}
+.button_add_group{
+    width: 130px;
+    height: 40px;
+    background-color: #18A0FB;
+    border-radius: 5px;
+    border-color: #18A0FB;
+    color: white;
+
+}
+.field_add_group{
+    width: 625px;
+    height: 50px;
+    padding: 10px;
+
+}
+.form_add_group{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
 }
 

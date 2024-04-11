@@ -7,5 +7,6 @@ Route::add(['GET', 'POST'], '/addEmployees', [Controller\Admin::class, 'addEmplo
 Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login']);
 Route::add('GET', '/logout', [Controller\Site::class, 'logout']);
 Route::add(['GET', 'POST'],'/addStudents', [Controller\Employees::class, 'addStudents'])->middleware('auth');
+Route::add(['GET', 'POST'],'/addGroup', [Controller\Employees::class, 'addGroup'])->middleware('auth');
 
 //->middleware('auth')

@@ -12,4 +12,9 @@ class Employees
     {
         return new View('employees.add_students');
     }
+
+    public function addGroup(Request $request): string
+    {
+        return new View('employees.add_group');
+    }
 }
