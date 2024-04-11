@@ -11,5 +11,6 @@ Route::add(['GET', 'POST'],'/addGroup', [Controller\Employees::class, 'addGroup'
 Route::add(['GET', 'POST'],'/addDiscipline', [Controller\Employees::class, 'addDiscipline'])->middleware('auth', 'roleEmployees');
 Route::add('GET','/cabinet', [Controller\Employees::class, 'cabinet'])->middleware('auth', 'roleEmployees');
 Route::add('GET','/students', [Controller\Employees::class, 'students'])->middleware('auth', 'roleEmployees');
+Route::add('GET','/groups', [Controller\Employees::class, 'groups'])->middleware('auth', 'roleEmployees');
 
 //->middleware('auth')

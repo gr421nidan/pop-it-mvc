@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Model\Group;
 use Model\Student;
 use Src\View;
 use Src\Request;
@@ -34,9 +35,9 @@ class Employees
         $students=Student::all();
         return new View('employees.students', ['students'=>$students]);
     }
-    public function group(Request $request): string
+    public function groups(Request $request): string
     {
-        $students=Student::all();
-        return new View('employees.students', ['students'=>$students]);
+        $groups=Group::all();
+        return new View('employees.groups', ['groups'=>$groups]);
     }
 }

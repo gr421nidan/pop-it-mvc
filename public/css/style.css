@@ -363,3 +363,36 @@ a{
     color: #18A0FB;
     text-decoration: none;
 }
+
+.groups_content{
+    padding: 120px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 88px;
+}
+.groups_title{
+    font-size: 48px;
+}
+.list_groups{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 45px;
+    grid-row-gap: 1em;
+}
+li{
+    list-style: none;
+}
+
+.group_block{
+    width: 200px;
+    height: 80px;
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 80px;
+
+}
+.wrapper{
+    display: flex;
+    justify-content: center;
+}
