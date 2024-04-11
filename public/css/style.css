@@ -293,3 +293,34 @@ nav{
     align-items: center;
 }
 
+
+
+.employee_cabinet{
+    display: flex;
+    flex-direction: row;
+    gap: 160px;
+
+}
+.info_employees{
+    width: 735px;
+    height: 552px;
+    padding: 0 33px;
+    border: 1px solid black;
+}
+.text_info{
+    width: 670px;
+    height: 55px;
+    border: 1px solid black;
+    padding: 15px;
+
+}
+.content_cabinet{
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+}
+.employee_cabinet_content{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}

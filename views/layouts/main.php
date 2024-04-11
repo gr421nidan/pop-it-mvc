@@ -50,7 +50,7 @@ else:
             <nav class="nav_employees">
                 <h3><a href="<?= app()->route->getUrl('/hello') ?>" class="logo">Деканат</a></h3>
                 <a href="" class="nav_link">Успеваемость</a>
-                <a href="" class="nav_link">Личный кабинет</a>
+                <a href="<?= app()->route->getUrl('/cabinet') ?>" class="nav_link">Личный кабинет</a>
                 <a href="" class="nav_link">Группы</a>
                 <a href="" class="nav_link">Дисциплины</a>
                 <a href="" class="nav_link">Студенты</a>

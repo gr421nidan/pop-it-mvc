@@ -22,4 +22,9 @@ class Employees
     {
         return new View('employees.add_discipline');
     }
+
+    public function cabinet(Request $request): string
+    {
+        return new View('employees.cabinet');
+    }
 }

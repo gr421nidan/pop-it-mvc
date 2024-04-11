@@ -9,5 +9,6 @@ Route::add('GET', '/logout', [Controller\Site::class, 'logout']);
 Route::add(['GET', 'POST'],'/addStudents', [Controller\Employees::class, 'addStudents'])->middleware('auth', 'roleEmployees');
 Route::add(['GET', 'POST'],'/addGroup', [Controller\Employees::class, 'addGroup'])->middleware('auth', 'roleEmployees');
 Route::add(['GET', 'POST'],'/addDiscipline', [Controller\Employees::class, 'addDiscipline'])->middleware('auth', 'roleEmployees');
+Route::add('GET','/cabinet', [Controller\Employees::class, 'cabinet'])->middleware('auth', 'roleEmployees');
 
 //->middleware('auth')
