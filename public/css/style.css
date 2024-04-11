@@ -396,3 +396,48 @@ li{
     display: flex;
     justify-content: center;
 }
+
+
+.content_discipline{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 80px;
+    gap: 210px;
+}
+
+.discipline_list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.discipline_columns{
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    width: 800px;
+    background-color: #d2d2d2;
+}
+.discipline_columns_two{
+    background-color: #d2d2d2;
+    width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+}
+.button_ok{
+    width: 130px;
+    height: 40px;
+    border-color: #18A0FB;
+    border-radius: 5px;
+    color: #18A0FB;
+}
+.discipline_filter{
+    border-color: #18A0FB;
+    color: #18A0FB;
+    width: 130px;
+    height: 40px;
+}

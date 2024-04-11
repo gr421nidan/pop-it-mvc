@@ -40,4 +40,10 @@ class Employees
         $groups=Group::all();
         return new View('employees.groups', ['groups'=>$groups]);
     }
+
+    public function disciplines(Request $request): string
+    {
+
+        return new View('employees.disciplines');
+    }
 }
