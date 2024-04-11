@@ -18,7 +18,7 @@ else:
                 <h1>Добавьте новые данные</h1>
                 <div class="add_employee_info">
                     <p>Добавьте нового сотрудника</p>
-                    <button class="button_add"><a href="<?= app()->route->getUrl('') ?>" class="button_add_link">Добавить</a></button>
+                    <button class="button_add"><a href="<?= app()->route->getUrl('/addEmployees') ?>" class="button_add_link">Добавить</a></button>
                 </div>
             </div>
             <img src="/pop-it-mvc/public/image/main_admin.jpg" class="image" alt="Изображение">
