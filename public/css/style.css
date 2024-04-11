@@ -481,3 +481,55 @@ li{
     height: 40px;
 }
 
+
+
+.content_group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 80px;
+    gap: 100px;
+}
+
+.group_columns{
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    width: 700px;
+
+}
+.group_columns_two{
+
+    width: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.add_discipline_in_group{
+    display: flex;
+    flex-direction: column;
+    gap:32px;
+}
+.discipline_add_in_group{
+    height: 50px;
+    width: 460px;
+    padding: 10px;
+}
+.about_group_list{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.button_add_discipline_in_group{
+    height: 50px;
+    width: 460px;
+    color: white;
+    background-color: #18A0FB;
+    border: none;
+    border-radius: 5px;
+}

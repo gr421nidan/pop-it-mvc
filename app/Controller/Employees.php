@@ -51,4 +51,9 @@ class Employees
 
         return new View('employees.gradeStudents');
     }
+
+    public function group(Request $request): string
+    {
+        return new View('employees.group');
+    }
 }
