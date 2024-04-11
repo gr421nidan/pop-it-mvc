@@ -108,7 +108,6 @@ nav{
     gap: 28px;
 }
 
-
 .login_content{
     display: block;
     margin: 120px auto;
@@ -155,7 +154,6 @@ nav{
     border-radius: 5px;
     color: white;
 }
-
 
 .add_employees_content{
     display: block;
@@ -295,36 +293,75 @@ nav{
 
 
 
+.add_discipline_content{
+    display: block;
+    margin: 120px auto;
+    background-color: #ffffff;
+    width: 787px;
+    height: 473px;
+    padding: 100px;
+    border: 1px solid black;
+}
+.add_discipline_content_block{
+    display: flex;
+    flex-direction: column;
+    gap: 54px;
+    text-align: center;
+}
+.button_add_discipline{
+    width: 130px;
+    height: 40px;
+    background-color: #18A0FB;
+    border-radius: 5px;
+    border-color: #18A0FB;
+    color: white;
+
+}
+.field_add_discipline{
+    width: 625px;
+    height: 50px;
+    padding: 10px;
+
+}
+.form_add_discipline{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+}
+
 .employee_cabinet{
     display: flex;
     flex-direction: row;
-    gap: 160px;
+    gap: 80px;
 
 }
 .info_employees{
-    width: 735px;
+    width: 700px;
     height: 552px;
     padding: 0 33px;
     border: 1px solid black;
 }
 .text_info{
-    width: 670px;
+    width: 600px;
     height: 55px;
     border: 1px solid black;
     padding: 15px;
 
 }
+.image_cabinet{
+    width: 500px;
+}
 .content_cabinet{
-    margin-top: 120px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
 }
 .employee_cabinet_content{
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 30px;
 }
-
 
 .students_content{
     padding: 120px 80px;
@@ -364,6 +401,7 @@ a{
     text-decoration: none;
 }
 
+
 .groups_content{
     padding: 120px 80px;
     display: flex;
@@ -396,6 +434,7 @@ li{
     display: flex;
     justify-content: center;
 }
+
 
 
 .content_discipline{
@@ -441,3 +480,4 @@ li{
     width: 130px;
     height: 40px;
 }
+
