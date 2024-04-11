@@ -36,11 +36,11 @@ else:
                     </div>
                     <div class="add_new_data_info">
                         <p>Добавьте новую группу</p>
-                        <button class="button_add"><a href="<?= app()->route->getUrl('') ?>" class="button_add_link">Добавить</a></button>
+                        <button class="button_add"><a href="<?= app()->route->getUrl('/addGroup') ?>" class="button_add_link">Добавить</a></button>
                     </div>
                     <div class="add_new_data_info">
                         <p>Добавьте новую дисциплину</p>
-                        <button class="button_add"><a href="<?= app()->route->getUrl('') ?>" class="button_add_link">Добавить</a></button>
+                        <button class="button_add"><a href="<?= app()->route->getUrl('/addDiscipline') ?>" class="button_add_link">Добавить</a></button>
                     </div>
                 </div>
                 <img src="/pop-it-mvc/public/image/main_employees.jpg" class="image" alt="Изображение">

@@ -17,4 +17,9 @@ class Employees
     {
         return new View('employees.add_group');
     }
+
+    public function addDiscipline(Request $request): string
+    {
+        return new View('employees.add_discipline');
+    }
 }
