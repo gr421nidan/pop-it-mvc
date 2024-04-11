@@ -533,3 +533,78 @@ li{
     border: none;
     border-radius: 5px;
 }
+.desc_in_evaluations{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+.desc{
+    display: flex;
+    flex-direction: row;
+    gap: 526px;
+}
+.row_in_evaluations{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    align-items: center;
+}
+.counter_students{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+    padding: 20px;
+    text-align: center;
+
+}
+.column_in_evaluations{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.fio_student{
+    width: 500px;
+    height: 60px;
+    background-color: #e7e7e7;
+    padding: 23px;
+}
+.evaluations_number{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+    padding: 20px;
+    text-align: center;
+}
+.evaluations_in_group{
+    width: 40px;
+    height: 40px;
+
+}
+.content_evaluations{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-left: 80px;
+}
+.eval{
+    display: flex;
+    flex-direction: row;
+    gap: 70px;
+    align-items: center;
+}
+.btn{
+    height: 55px;
+    width: 180px;
+    color: white;
+    background-color: #18A0FB;
+    border: none;
+    border-radius: 5px;
+}
+.evaluations_button{
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}

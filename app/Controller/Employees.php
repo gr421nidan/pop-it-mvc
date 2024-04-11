@@ -61,4 +61,9 @@ class Employees
     {
         return new View('employees.gradeStudent');
     }
+
+    public function evaluations(Request $request): string
+    {
+        return new View('employees.evaluations');
+    }
 }
