@@ -49,11 +49,11 @@ else:
         <header>
             <nav class="nav_employees">
                 <h3><a href="<?= app()->route->getUrl('/hello') ?>" class="logo">Деканат</a></h3>
-                <a href="" class="nav_link">Успеваемость</a>
+                <a href="<?= app()->route->getUrl('/gradeStudents') ?>" class="nav_link">Успеваемость</a>
                 <a href="<?= app()->route->getUrl('/cabinet') ?>" class="nav_link">Личный кабинет</a>
-                <a href="" class="nav_link">Группы</a>
-                <a href="" class="nav_link">Дисциплины</a>
-                <a href="" class="nav_link">Студенты</a>
+                <a href="<?= app()->route->getUrl('/groups') ?>" class="nav_link">Группы</a>
+                <a href="<?= app()->route->getUrl('/disciplines') ?>" class="nav_link">Дисциплины</a>
+                <a href="<?= app()->route->getUrl('/students') ?>" class="nav_link">Студенты</a>
                 <button class="button_nav"><a href="<?= app()->route->getUrl('/logout') ?>" class="button_nav_link">Выход</a></button>
             </nav>
         </header>

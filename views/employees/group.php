@@ -4,11 +4,11 @@
 
         <ul class="about_group_list">
             <h3>Дисциплины группы:</h3>
-            <a href=""><li>Математика, 2 курс, 2 семестр, 48часов, экзамен</li></a>
-            <a href=""><li>sffvgfbfgb</li></a>
-            <a href=""><li>sffvgfbfgb</li></a>
-            <a href=""><li>sffvgfbfgb</li></a>
-            <a href=""><li>sffvgfbfgb</li></a>
+            <a href="<?= app()->route->getUrl('/groups/group/evaluations') ?>" ><li>Математика, 2 курс, 2 семестр, 48часов, экзамен</li></a>
+            <a href="<?= app()->route->getUrl('/groups/group/evaluations') ?>" ><li>sffvgfbfgb</li></a>
+            <a href="<?= app()->route->getUrl('/groups/group/evaluations') ?>" ><li>sffvgfbfgb</li></a>
+            <a href="<?= app()->route->getUrl('/groups/group/evaluations') ?>" ><li>sffvgfbfgb</li></a>
+            <a href="<?= app()->route->getUrl('/groups/group/evaluations') ?>" ><li>sffvgfbfgb</li></a>
 
         </ul>
     </div>

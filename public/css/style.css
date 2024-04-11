@@ -340,8 +340,11 @@ nav{
 .info_employees{
     width: 700px;
     height: 552px;
-    padding: 0 33px;
     border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 50px;
 }
 .text_info{
     width: 600px;
