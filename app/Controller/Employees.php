@@ -18,6 +18,9 @@ class Employees
 
     public function addGroup(Request $request): string
     {
+        if ($request->method === 'POST' && Group::create($request->all())) {
+            app()->route->redirect('/groups');
+        }
         return new View('employees.add_group');
     }
 
