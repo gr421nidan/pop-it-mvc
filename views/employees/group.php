@@ -9,8 +9,24 @@
             <a href="<?= app()->route->getUrl('/groups/group/evaluations') ?>" ><li>sffvgfbfgb</li></a>
             <a href="<?= app()->route->getUrl('/groups/group/evaluations') ?>" ><li>sffvgfbfgb</li></a>
             <a href="<?= app()->route->getUrl('/groups/group/evaluations') ?>" ><li>sffvgfbfgb</li></a>
-
         </ul>
+    </div>
+    <div class="discipline_filter_content">
+        <select class="discipline_filter">
+            <option value="">Курс</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <select class="discipline_filter">
+            <option value="">Семестр</option>
+            <option>1</option>
+            <option>2</option>
+        </select>
+
+        <button class="button_ok">Ок</button>
     </div>
     <div class="group_columns_two">
         <h2>Добавить дисциплину</h2>

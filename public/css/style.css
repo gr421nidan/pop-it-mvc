@@ -492,7 +492,7 @@ li{
     flex-direction: row;
     justify-content: center;
     margin-top: 80px;
-    gap: 100px;
+    gap: 30px;
 }
 
 .group_columns{
@@ -512,6 +512,11 @@ li{
     align-items: center;
     padding: 20px;
     border: 1px solid black;
+}
+.discipline_filter_content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .add_discipline_in_group{
