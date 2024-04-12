@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Model\Discipline;
 use Model\Group;
 use Model\Student;
 use Src\View;
@@ -43,8 +44,8 @@ class Employees
 
     public function disciplines(Request $request): string
     {
-
-        return new View('employees.disciplines');
+        $disciplines=Discipline::all();
+        return new View('employees.disciplines',['disciplines'=>$disciplines]);
     }
     public function gradeStudents(Request $request): string
     {
