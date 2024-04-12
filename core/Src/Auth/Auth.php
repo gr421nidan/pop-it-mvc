@@ -64,6 +64,12 @@ class Auth
         if ($userRole === 1) return true;
         else return false;
     }
+    public static function generateCSRF(): string
+    {
+        $token = md5(time());
+        Session::set('csrf_token', $token);
+        return $token;
+    }
 
 
 }

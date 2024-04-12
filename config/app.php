@@ -11,8 +11,12 @@ return [
         'roleEmployees' => \Middlewares\RoleEmployeesMiddleware::class,
     ],
     'routeAppMiddleware' => [
-        'trim' => Middlewares\TrimMiddleware::class,
+        'csrf' => \Middlewares\CSRFMiddleware::class,
+        'trim' => \Middlewares\TrimMiddleware::class,
+        'specialChars' => \Middlewares\SpecialCharsMiddleware::class,
     ],
+
+
     'validators' => [
         'required' => \Validators\RequireValidator::class,
         'unique' => \Validators\UniqueValidator::class
