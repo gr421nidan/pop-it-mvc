@@ -10,6 +10,9 @@ return [
         'role' => \Middlewares\RoleMiddleware::class,
         'roleEmployees' => \Middlewares\RoleEmployeesMiddleware::class,
     ],
+    'routeAppMiddleware' => [
+        'trim' => Middlewares\TrimMiddleware::class,
+    ],
     'validators' => [
         'required' => \Validators\RequireValidator::class,
         'unique' => \Validators\UniqueValidator::class
