@@ -23,6 +23,9 @@ class Employees
 
     public function addDiscipline(Request $request): string
     {
+        if ($request->method === 'POST' && Discipline::create($request->all())) {
+            app()->route->redirect('/disciplines');
+        }
         return new View('employees.add_discipline');
     }
 
