@@ -1,3 +1,4 @@
+<?= $message ?? '';?>
 <div class="add_employees_content">
     <div class="add_employees_content_block">
         <h2>Добавление нового сотрудника</h2>
