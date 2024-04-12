@@ -13,7 +13,25 @@ class Employees
 {
     public function addStudents(Request $request): string
     {
-        return new View('employees.add_students');
+        $select_groups = Group::all();
+        if ($request->method === 'POST') {
+            $data = $request->all();
+            $group = Group::find($data['group_id']);
+            if ($group) {
+                Student::create([
+                    'last_name' => $data['last_name'],
+                    'first_name' => $data['name'],
+                    'patronymic' => $data['patronymic'],
+                    'gender' => $data['gender'],
+                    'date' => $data['date'],
+                    'address' => $data['address'],
+                    'id_group' => $group->id
+                ]);
+                app()->route->redirect('/students');
+            }
+        }
+
+        return new View('employees.add_students', ['select_groups' => $select_groups]);
     }
 
     public function addGroup(Request $request): string
