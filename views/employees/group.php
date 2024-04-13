@@ -1,14 +1,22 @@
 <div class="content_group">
     <div class="group_columns">
-        <h1>Группа №421</h1>
-
         <ul class="about_group_list">
-            <h3>Дисциплины группы:</h3>
-            <a href="<?= app()->route->getUrl('/groups/group/evaluations') ?>" ><li>Математика, 2 курс, 2 семестр, 48часов, экзамен</li></a>
-            <a href="<?= app()->route->getUrl('/groups/group/evaluations') ?>" ><li>sffvgfbfgb</li></a>
-            <a href="<?= app()->route->getUrl('/groups/group/evaluations') ?>" ><li>sffvgfbfgb</li></a>
-            <a href="<?= app()->route->getUrl('/groups/group/evaluations') ?>" ><li>sffvgfbfgb</li></a>
-            <a href="<?= app()->route->getUrl('/groups/group/evaluations') ?>" ><li>sffvgfbfgb</li></a>
+            <h3>Дисциплины группы №<?= $group[0]->info_group->name ?>:</h3>
+            <?php $i = 1; ?>
+            <?php foreach ($group as $groups) : ?>
+                <?php $discipline = $groups->discipline->name; ?>
+                <?php $control = $groups->control->name; ?>
+                <?php $hours = $groups->number_hours; ?>
+                <?php $course = $groups->course; ?>
+                <?php $semester = $groups->semester; ?>
+                <li class="student_in_list">
+                    <a href="<?php echo app()->route->getUrl('/groups/group/evaluations'); ?>">
+                        <span class="counter"><?php echo $i; ?></span>
+                        <?php echo "$discipline вид контроля:$control курс:$course семестр: $semester количество часов:$hours"; ?>
+                    </a>
+                </li>
+                <?php $i++; ?>
+            <?php endforeach; ?>
         </ul>
     </div>
     <div class="discipline_filter_content">

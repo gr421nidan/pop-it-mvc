@@ -4,7 +4,7 @@
         <div class="list_groups">
             <?php
             foreach ($groups as $group){
-                echo "<div class='group_block'><a href='".app()->route->getUrl('/groups/group')."'>$group->name</a></div>";
+                echo "<div class='group_block'><a href='".app()->route->getUrl('/groups/group?id='.$group->id)."'>$group->name</a></div>";
             }
             ?>
         </div>

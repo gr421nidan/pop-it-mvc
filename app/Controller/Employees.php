@@ -3,11 +3,13 @@
 namespace Controller;
 
 use Model\Discipline;
+use Model\DisciplinesGroup;
 use Model\Group;
 use Model\Student;
 use Src\View;
 use Src\Request;
 use Model\User;
+
 
 class Employees
 {
@@ -79,7 +81,8 @@ class Employees
 
     public function group(Request $request): string
     {
-        return new View('employees.group');
+        $group = DisciplinesGroup::where('id_group', $request->id)->get();
+        return new View('employees.group', ['group' => $group]);
     }
 
     public function studentGrade(Request $request): string
@@ -91,4 +94,5 @@ class Employees
     {
         return new View('employees.evaluations');
     }
+
 }

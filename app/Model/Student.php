@@ -19,6 +19,7 @@ class Student  extends Model
         'gender',
         'date',
         'address',
+        'id_group'
         ];
 
     public function group() {

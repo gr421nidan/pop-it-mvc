@@ -13,7 +13,7 @@ class DisciplinesGroup  extends Model
     public $timestamps = false;
     protected $fillable = [
         'id_group',
-        'id_discipline',
+        'id_disciplines',
         'id_control',
         'number_hours',
         'course',
@@ -21,5 +21,16 @@ class DisciplinesGroup  extends Model
     ];
 
     public $table = 'disciplines_group';
+    public function discipline() {
+        return $this->belongsTo(Discipline::class, 'id_disciplines');
+    }
+
+    public function control() {
+        return $this->belongsTo(Control::class, 'id_control');
+    }
+
+    public function info_group() {
+        return $this->belongsTo(Group::class, 'id_group');
+    }
 
 }
