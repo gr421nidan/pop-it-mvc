@@ -2,8 +2,10 @@
 
 namespace Controller;
 
+use Model\Control;
 use Model\Discipline;
 use Model\DisciplinesGroup;
+use Model\Grade;
 use Model\Group;
 use Model\Student;
 use Src\View;
@@ -56,7 +58,6 @@ class Employees
     {
         return new View('employees.cabinet');
     }
-
     public function students(Request $request): string
     {
         $students=Student::all();
@@ -85,9 +86,11 @@ class Employees
         return new View('employees.group', ['group' => $group]);
     }
 
-    public function studentGrade(Request $request): string
+    public function studentGrade(Request $request):string
     {
-        return new View('employees.gradeStudent');
+        $controls = Control::all();
+        $studentGrade = Grade::where('id_student', $request->id)->with('student', 'evaluations', 'disciplinesGroup')->get();
+        return new View('employees.gradeStudent', ['studentGrade' => $studentGrade, 'controls' => $controls]);
     }
 
     public function evaluations(Request $request): string

@@ -13,7 +13,7 @@ class Student  extends Model
 
     public $timestamps = false;
     protected $fillable = [
-        'firs_name',
+        'first_name',
         'last_name',
         'patronymic',
         'gender',

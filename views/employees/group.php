@@ -2,13 +2,13 @@
     <div class="group_columns">
         <ul class="about_group_list">
             <h3>Дисциплины группы №<?= $group[0]->info_group->name ?>:</h3>
-            <?php $i = 1; ?>
-            <?php foreach ($group as $groups) : ?>
-                <?php $discipline = $groups->discipline->name; ?>
-                <?php $control = $groups->control->name; ?>
-                <?php $hours = $groups->number_hours; ?>
-                <?php $course = $groups->course; ?>
-                <?php $semester = $groups->semester; ?>
+            <?php $i = 1;
+            foreach ($group as $groups) :
+                $discipline = $groups->discipline->name;
+                $control = $groups->control->name;
+                $hours = $groups->number_hours;
+                $course = $groups->course;
+                $semester = $groups->semester; ?>
                 <li class="student_in_list">
                     <a href="<?php echo app()->route->getUrl('/groups/group/evaluations'); ?>">
                         <span class="counter"><?php echo $i; ?></span>
@@ -64,7 +64,14 @@
                 <option value="3">Семинар</option>
                 <option value="4">Коллоквиум</option>
             </select>
-            <input class="discipline_add_in_group" type="number" name="hours" placeholder="Количество часов">
+            <select class="discipline_add_in_group">
+                <option value="">Количество часов</option>
+                <option value="48">48</option>
+                <option value="56">56</option>
+                <option value="82">86</option>
+                <option value="93">93</option>
+                <option value="112">112</option>
+            </select>
             <button class="button_add_discipline_in_group">Добавить</button>
         </form>
     </div>
