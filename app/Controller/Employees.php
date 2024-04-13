@@ -82,8 +82,30 @@ class Employees
 
     public function group(Request $request): string
     {
+        $groupId = $request->id;
+        $discipline_name=Discipline::all();
+        $control_name=Control::all();
         $group = DisciplinesGroup::where('id_group', $request->id)->get();
-        return new View('employees.group', ['group' => $group]);
+        if ($request->method === 'POST') {
+            $data = $request->all();
+            $group = Group::find($data['group_id']);
+            $id_discipline = Discipline::where('name', $data['discipline_names'])->first();
+            $id_control = Control::where('name', $data['control_names'])->first();
+            if ($group && $id_control && $id_discipline) {
+                DisciplinesGroup::create([
+                    'id_group' => $group->id,
+                    'id_disciplines' => $id_discipline->id,
+                    'id_control' => $id_control->id,
+                    'number_hours' => $data['num_hours'],
+                    'course' => $data['course'],
+                    'semester' => $data['semester']
+                ]);
+                app()->route->redirect('/groups');
+            }
+        }
+        $groupName = Group::find($groupId)->name;
+        return new View('employees.group', ['group' => $group, 'discipline_name'=>$discipline_name,'control_name'=>$control_name, 'groupName' => $groupName, 'groupId' => $groupId, ]);
+
     }
 
     public function studentGrade(Request $request):string
@@ -97,5 +119,6 @@ class Employees
     {
         return new View('employees.evaluations');
     }
+
 
 }
