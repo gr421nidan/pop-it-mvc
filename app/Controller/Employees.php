@@ -20,6 +20,20 @@ class Employees
     {
         $select_groups = Group::all();
         if ($request->method === 'POST') {
+            $validator = new Validator($request->all(), [
+                'last_name' => ['required:students,last_name'],
+                'name'=>['required:students,first_name'],
+                'date' => ['required','currentDate'],
+                'gender' => ['required'],
+                'address' => ['required'],
+            ], [
+                'required' => 'Поле :field пусто',
+                'currentDate'=>'Поле :field некорректно'
+            ]);
+            if ($validator->fails()) {
+                return new View('employees.add_students',
+                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+            }
             $data = $request->all();
             $group = Group::find($data['group_id']);
             if ($group) {
