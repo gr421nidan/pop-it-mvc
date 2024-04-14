@@ -14,7 +14,7 @@
                     $semester = $groups->semester;
                     ?>
                     <li class="student_in_list">
-                        <a href="<?php echo app()->route->getUrl('/groups/group/evaluations'); ?>">
+                        <a href="<?php echo app()->route->getUrl('/groups/group/evaluations?id='.$groupId); ?>">
                             <span class="counter"><?php echo $i; ?></span>
                             <?php echo "$discipline вид контроля:$control курс:$course семестр: $semester количество часов:$hours"; ?>
                         </a>
