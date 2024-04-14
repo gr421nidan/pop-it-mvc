@@ -14,12 +14,14 @@ class Admin
     {
         if ($request->method === 'POST'){
             $validator = new Validator($request->all(), [
-                'login' => ['required', 'unique:users,login'],
-                'password' => ['required', 'passwordLength'],
+                'login' => ['required', 'unique:users,login', 'latinAndDigits::users,login'],
+                'password' => ['required', 'passwordLength','latinAndDigits::users,password'],
             ], [
                 'required' => 'Поле :field пусто',
                 'unique' => 'Поле :field должно быть уникально',
-                'passwordLength'=>'Пароль должен быть минимум 6 символов'
+                'passwordLength'=>'Пароль должен быть минимум 6 символов',
+                'latinAndDigits'=>'Поле :field использует кириллицу',
+
             ]);
             if($validator->fails()){
                 return new View('admin.add_employees',

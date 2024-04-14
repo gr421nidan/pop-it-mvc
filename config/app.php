@@ -21,7 +21,8 @@ return [
         'required' => \Validators\RequireValidator::class,
         'unique' => \Validators\UniqueValidator::class,
         'currentDate'=>\Validators\BirthDateValidator::class,
-        'passwordLength' =>\Validators\PasswordLengthValidator::class
+        'passwordLength' =>\Validators\PasswordLengthValidator::class,
+        'latinAndDigits'=>\Validators\LatinAndDigitsValidator::class
     ]
 
 ];
