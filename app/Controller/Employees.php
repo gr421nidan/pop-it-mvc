@@ -116,9 +116,28 @@ class Employees
 
     public function disciplines(Request $request): string
     {
-        $disciplines=Discipline::all();
-        return new View('employees.disciplines',['disciplines'=>$disciplines]);
+        $message = null;
+        $disciplines = [];
+        if ($request->get('search')) {
+            // Получаем параметр поиска из запроса
+            $searchTerm = $request->get('search');
+
+            // Если есть параметр поиска, выполняем поиск
+            if ($searchTerm) {
+                // Выполняем поиск дисциплин по имени
+                $disciplines = Discipline::where('name', 'like', '%' . $searchTerm . '%')->get();
+            }
+            if ($disciplines->isEmpty()) {
+                $message = 'Дисциплины с таким названием отсутствуют';
+            }
+
+        } else {
+            $disciplines = Discipline::all();
+        }
+
+        return new View('employees.disciplines', ['disciplines' => $disciplines, 'message' => $message ?? null]);
     }
+
     public function gradeStudents(Request $request): string
     {
 

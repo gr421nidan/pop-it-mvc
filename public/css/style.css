@@ -638,3 +638,26 @@ li{
     flex-direction: column;
     gap: 20px;
 }
+
+.form_search{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.btn_search{
+    height: 30px;
+    width: 80px;
+    color: white;
+    background-color: #18A0FB;
+    border: none;
+    border-radius: 5px;
+}
+.a_search{
+    color: white;
+}
+.input_search{
+    height: 30px;
+    width: 180px;
+    border: none;
+    border-radius: 5px;
+}
