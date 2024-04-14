@@ -678,3 +678,30 @@ li{
     height: 600px;
     background-color: #d2d2d2;
 }
+.counter_grade{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    padding: 9px;
+    text-align: center;
+}
+.grade_columns{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 600px;
+    background-color: #d2d2d2;
+    align-items: center;
+    padding: 20px;
+}
+.grade_columns_two{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 600px;
+    height: 100px;
+    background-color: #d2d2d2;
+    align-items: center;
+    padding: 20px;
+}

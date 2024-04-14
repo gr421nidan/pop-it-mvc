@@ -142,7 +142,29 @@ class Employees
     {
         $groupsGrades = Group::all();
         $disciplinesGrades = Discipline::all();
-        return new View('employees.gradeStudents',['groupsGrades'=>$groupsGrades,'disciplinesGrades'=>$disciplinesGrades ]);
+        $grades = Grade::with('disciplinesGroup.info_group', 'student', 'evaluations')->get();
+        $gradeList = [];
+        foreach ($grades as $grade) {
+            // Если есть оценка, добавляем информацию о студенте, группе, дисциплине и оценке
+            if ($grade->evaluations) {
+                $studentName = $grade->student->last_name . ' ' . $grade->student->first_name . ' ' . $grade->student->patronymic;
+                $groupName = $grade->disciplinesGroup->info_group->name;
+                $disciplineName = $grade->disciplinesGroup->discipline->name;
+                $evaluation = $grade->evaluations->evaluation;
+
+                $gradeList[] = [
+                    'student' => $studentName,
+                    'group' => $groupName,
+                    'discipline' => $disciplineName,
+                    'evaluation' => $evaluation
+                ];
+            }
+        }
+        return new View('employees.gradeStudents', [
+            'gradeList' => $gradeList,
+            'groupsGrades' => $groupsGrades,
+            'disciplinesGrades' => $disciplinesGrades
+        ]);
     }
     public function addDisciplineInGroup(Request $request):string
     {
