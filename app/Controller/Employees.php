@@ -249,6 +249,9 @@ class Employees
 
     public function studentGrade(Request $request): string
     {
+        $studentId = $request->id;
+        $studentInfo = Student::find($studentId);
+        $studentName = $studentInfo->last_name . ' ' . $studentInfo->first_name . ' ' . $studentInfo->patronymic;
         if ($request->method === 'POST') {
 
             $controlId = $request->get('control_id');
@@ -270,6 +273,14 @@ class Employees
                 });
             }
             $studentGrades = $query->get();
+            $controls = Control::all();
+
+            if ($studentGrades->isEmpty()) {
+                return new View('employees.gradeStudent', [
+                    'controls' => $controls,
+                    'studentId' => $studentId,
+                    'studentName'=>$studentName]);
+            }
         } else {
             $studentGrades = Grade::where('id_student', $request->id)
                 ->with('student', 'evaluations', 'disciplinesGroup')
@@ -280,6 +291,8 @@ class Employees
         return new View('employees.gradeStudent', [
             'studentGrade' => $studentGrades,
             'controls' => $controls,
+            'studentId' => $studentId,
+            'studentName'=>$studentName
         ]);
     }
 

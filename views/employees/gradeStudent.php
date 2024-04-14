@@ -2,11 +2,8 @@
     <div class="discipline_columns">
         <?php if (!empty($studentGrade[0])) : ?>
             <?php
-            $student_surname =$studentGrade[0]->student->last_name;
-            $student_name=$studentGrade[0]->student->first_name;
-            $student_patronymic=$studentGrade[0]->student->patronymic;
             ?>
-            <h1>Успеваемость студента - <?=$student_surname, $student_name, $student_patronymic?></h1>
+            <h1>Успеваемость студента - <?=$studentName?></h1>
             <ul class="discipline_list">
                 <?php $i = 1;
                 foreach ($studentGrade as $studentGrades) :
@@ -22,7 +19,8 @@
                 <?php endforeach; ?>
             </ul>
         <?php else : ?>
-            <h1>У данного студента отсутствует успеваемость</h1>
+            <h1>Успеваемость студента - <?=$studentName?></h1>
+            <h4>Отсутствует успеваемость</h4>
         <?php endif; ?>
     </div>
     <div class="discipline_columns_two">
@@ -43,6 +41,7 @@
                 <option value="112">112</option>
             </select>
             <button type="submit" class="button_ok">Применить</button>
+            <button class="button_ok"><a href="<?php echo app()->route->getUrl('/student/grade?id='.$studentId); ?>">Сбросить</a></button>
         </form>
     </div>
 </div>
