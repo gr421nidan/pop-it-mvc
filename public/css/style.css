@@ -354,7 +354,8 @@ nav{
 
 }
 .image_cabinet{
-    width: 500px;
+    width: 400px;
+    height: 400px;
 }
 .content_cabinet{
     margin-top: 50px;
@@ -630,4 +631,10 @@ li{
     border: 1px solid black;
     padding: 9px;
     text-align: center;
+}
+
+.list_img{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }

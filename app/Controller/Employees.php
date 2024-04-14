@@ -7,6 +7,7 @@ use Model\Discipline;
 use Model\DisciplinesGroup;
 use Model\Grade;
 use Model\Group;
+use Model\Image;
 use Model\Student;
 use Src\Validator\Validator;
 use Src\View;
@@ -96,7 +97,8 @@ class Employees
 
     public function cabinet(Request $request): string
     {
-        return new View('employees.cabinet');
+        $image=Image::all();
+        return new View('employees.cabinet',['image'=>$image]);
     }
     public function students(Request $request): string
     {

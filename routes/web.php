@@ -18,4 +18,3 @@ Route::add(['GET', 'POST'],'/groups/group', [Controller\Employees::class, 'group
 Route::add('GET','/student/grade', [Controller\Employees::class, 'studentGrade'])->middleware('auth', 'roleEmployees');
 Route::add(['GET', 'POST'],'/groups/group/evaluations', [Controller\Employees::class, 'evaluations'])->middleware('auth', 'roleEmployees');
 
-//->middleware('auth')
