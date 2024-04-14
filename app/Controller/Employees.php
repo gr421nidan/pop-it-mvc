@@ -144,9 +144,7 @@ class Employees
         $disciplinesGrades = Discipline::all();
         return new View('employees.gradeStudents',['groupsGrades'=>$groupsGrades,'disciplinesGrades'=>$disciplinesGrades ]);
     }
-
-
-    public function group(Request $request): string
+    public function addDisciplineInGroup(Request $request):string
     {
         $groupId = $request->id;
         $discipline_name=Discipline::all();
@@ -166,12 +164,37 @@ class Employees
                     'course' => $data['course'],
                     'semester' => $data['semester']
                 ]);
-                app()->route->redirect('/groups');
+                app()->route->redirect('/groups/group?id='.$group->id);
             }
         }
         $groupName = Group::find($groupId)->name;
-        return new View('employees.group', ['group' => $group, 'discipline_name'=>$discipline_name,'control_name'=>$control_name, 'groupName' => $groupName, 'groupId' => $groupId, ]);
+        return new View('employees.add_discipline_in_group', ['group' => $group, 'discipline_name'=>$discipline_name,'control_name'=>$control_name, 'groupName' => $groupName, 'groupId' => $groupId, ]);
+    }
 
+    public function group(Request $request): string
+    {
+        $groupId = $request->id;
+        $groupName = Group::find($groupId)->name;
+        $semester = $request->get('semester');
+        $course = $request->get('course');
+
+        // Запрос на получение списка дисциплин группы с учетом фильтрации
+        $group = DisciplinesGroup::where('id_group', $request->id);
+
+        // Применяем фильтрацию по семестру и курсу
+        if (!empty($semester)) {
+            $group->where('semester', $semester);
+        }
+        if (!empty($course)) {
+            $group->where('course', $course);
+        }
+        $group = $group->get();
+
+        return new View('employees.group', [
+            'group' => $group,
+            'groupName' => $groupName,
+            'groupId' => $groupId,
+        ]);
     }
 
     public function studentGrade(Request $request): string

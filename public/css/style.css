@@ -509,6 +509,7 @@ li{
 .group_columns_two{
 
     width: 500px;
+    height: 100px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -663,4 +664,17 @@ li{
     width: 180px;
     border: none;
     border-radius: 5px;
+}
+
+.content_add_discipline_in_group{
+    margin-top: 30px;
+    margin-left: 30%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    width: 600px;
+    height: 600px;
+    background-color: #d2d2d2;
 }
