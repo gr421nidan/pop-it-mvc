@@ -140,9 +140,11 @@ class Employees
 
     public function gradeStudents(Request $request): string
     {
-
-        return new View('employees.gradeStudents');
+        $groupsGrades = Group::all();
+        $disciplinesGrades = Discipline::all();
+        return new View('employees.gradeStudents',['groupsGrades'=>$groupsGrades,'disciplinesGrades'=>$disciplinesGrades ]);
     }
+
 
     public function group(Request $request): string
     {
@@ -172,11 +174,40 @@ class Employees
 
     }
 
-    public function studentGrade(Request $request):string
+    public function studentGrade(Request $request): string
     {
+        if ($request->method === 'POST') {
+
+            $controlId = $request->get('control_id');
+            $hours = $request->get('hours');
+
+            // Формируем запрос с учетом выбранных фильтров
+            $query = Grade::where('id_student', $request->id)
+                ->with('student', 'evaluations', 'disciplinesGroup');
+
+            if (!empty($controlId)) {
+                $query->whereHas('disciplinesGroup', function ($query) use ($controlId) {
+                    $query->where('id_control', $controlId);
+                });
+            }
+
+            if (!empty($hours)) {
+                $query->whereHas('disciplinesGroup', function ($query) use ($hours) {
+                    $query->where('number_hours', $hours);
+                });
+            }
+            $studentGrades = $query->get();
+        } else {
+            $studentGrades = Grade::where('id_student', $request->id)
+                ->with('student', 'evaluations', 'disciplinesGroup')
+                ->get();
+        }
         $controls = Control::all();
-        $studentGrade = Grade::where('id_student', $request->id)->with('student', 'evaluations', 'disciplinesGroup')->get();
-        return new View('employees.gradeStudent', ['studentGrade' => $studentGrade, 'controls' => $controls]);
+
+        return new View('employees.gradeStudent', [
+            'studentGrade' => $studentGrades,
+            'controls' => $controls,
+        ]);
     }
 
     public function evaluations(Request $request): string
