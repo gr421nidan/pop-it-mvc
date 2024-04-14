@@ -13,7 +13,7 @@ Route::add(['GET', 'POST'],'/cabinet', [Controller\Employees::class, 'cabinet'])
 Route::add(['GET', 'POST'],'/students', [Controller\Employees::class, 'students'])->middleware('auth', 'roleEmployees');
 Route::add(['GET', 'POST'],'/groups', [Controller\Employees::class, 'groups'])->middleware('auth', 'roleEmployees');
 Route::add(['GET', 'POST'],'/disciplines', [Controller\Employees::class, 'disciplines'])->middleware('auth', 'roleEmployees');
-Route::add('GET','/gradeStudents', [Controller\Employees::class, 'gradeStudents'])->middleware('auth', 'roleEmployees');
+Route::add(['GET', 'POST'],'/gradeStudents', [Controller\Employees::class, 'gradeStudents'])->middleware('auth', 'roleEmployees');
 Route::add(['GET', 'POST'],'/groups/group', [Controller\Employees::class, 'group'])->middleware('auth', 'roleEmployees');
 Route::add(['GET', 'POST'],'/student/grade', [Controller\Employees::class, 'studentGrade'])->middleware('auth', 'roleEmployees');
 Route::add(['GET', 'POST'],'/groups/group/evaluations', [Controller\Employees::class, 'evaluations'])->middleware('auth', 'roleEmployees');

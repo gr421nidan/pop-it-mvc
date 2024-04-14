@@ -142,8 +142,27 @@ class Employees
     {
         $groupsGrades = Group::all();
         $disciplinesGrades = Discipline::all();
-        $grades = Grade::with('disciplinesGroup.info_group', 'student', 'evaluations')->get();
+        // Получаем все оценки со связанными моделями группы, студента и дисциплины
+        $gradesQuery = Grade::with('disciplinesGroup.info_group', 'student', 'evaluations');
+        if ($request->method === 'POST') {
+            if ($request->get('groups')) {
+                $groupId = $request->get('groups');
+                // Добавляем условие фильтрации по выбранной группе
+                $gradesQuery->whereHas('disciplinesGroup.info_group', function ($query) use ($groupId) {
+                    $query->where('id', $groupId);
+                });
+            }
+            if ($request->get('disciplines')) {
+                $disciplineId = $request->get('disciplines');
+                // Добавляем условие фильтрации по выбранной дисциплине
+                $gradesQuery->whereHas('disciplinesGroup', function ($query) use ($disciplineId) {
+                    $query->where('id_disciplines', $disciplineId);
+                });
+            }
+        }
+        $grades = $gradesQuery->get();
         $gradeList = [];
+        $notEmpty=false;
         foreach ($grades as $grade) {
             // Если есть оценка, добавляем информацию о студенте, группе, дисциплине и оценке
             if ($grade->evaluations) {
@@ -158,12 +177,21 @@ class Employees
                     'discipline' => $disciplineName,
                     'evaluation' => $evaluation
                 ];
+                $notEmpty=true;
             }
+        }
+        if (empty($gradeList)) {
+            return new View('employees.gradeStudents', [
+                'groupsGrades' => $groupsGrades,
+                'disciplinesGrades' => $disciplinesGrades,
+                'notEmpty'=>$notEmpty
+            ]);
         }
         return new View('employees.gradeStudents', [
             'gradeList' => $gradeList,
             'groupsGrades' => $groupsGrades,
-            'disciplinesGrades' => $disciplinesGrades
+            'disciplinesGrades' => $disciplinesGrades,
+            'notEmpty'=>$notEmpty
         ]);
     }
     public function addDisciplineInGroup(Request $request):string
