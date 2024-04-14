@@ -1,3 +1,4 @@
+<?= $message ?? '';?>
 <div class="add_group_content">
     <div class="add_group_content_block">
         <h2>Добавление новой группы</h2>

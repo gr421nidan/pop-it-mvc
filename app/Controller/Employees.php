@@ -8,6 +8,7 @@ use Model\DisciplinesGroup;
 use Model\Grade;
 use Model\Group;
 use Model\Student;
+use Src\Validator\Validator;
 use Src\View;
 use Src\Request;
 use Model\User;
@@ -40,16 +41,41 @@ class Employees
 
     public function addGroup(Request $request): string
     {
-        if ($request->method === 'POST' && Group::create($request->all())) {
-            app()->route->redirect('/groups');
+        if ($request->method === 'POST') {
+            $validator = new Validator($request->all(), [
+                'name' => ['required', 'unique:groups_students,name'],
+            ], [
+                'required' => 'Поле :field пусто',
+                'unique' => 'Поле :field должно быть уникально'
+            ]);
+            if ($validator->fails()) {
+                return new View('employees.add_group',
+                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+            }
+            if (Group::create($request->all())) {
+                app()->route->redirect('/groups');
+            }
         }
         return new View('employees.add_group');
     }
 
     public function addDiscipline(Request $request): string
     {
-        if ($request->method === 'POST' && Discipline::create($request->all())) {
-            app()->route->redirect('/disciplines');
+        if ($request->method === 'POST') {
+            $validator = new Validator($request->all(), [
+                'name' => ['required', 'unique:disciplines,name'],
+            ], [
+                'required' => 'Поле :field пусто',
+                'unique' => 'Поле :field должно быть уникально'
+            ]);
+            if ($validator->fails()) {
+                return new View('employees.add_discipline',
+                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+            }
+
+            if (Discipline::create($request->all())) {
+                app()->route->redirect('/disciplines');
+            }
         }
         return new View('employees.add_discipline');
     }

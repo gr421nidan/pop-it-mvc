@@ -30,7 +30,7 @@
             <option value="">Вид контроля</option>
             <?php
             foreach ($controls as $control){
-                echo "<option value='$control->id_control' $control->name </option>";
+                echo "<option value='$control->id_control'> $control->name </option>";
             }
             ?>
         </select>
