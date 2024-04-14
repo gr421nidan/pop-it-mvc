@@ -22,7 +22,8 @@ return [
         'unique' => \Validators\UniqueValidator::class,
         'currentDate'=>\Validators\BirthDateValidator::class,
         'passwordLength' =>\Validators\PasswordLengthValidator::class,
-        'latinAndDigits'=>\Validators\LatinAndDigitsValidator::class
+        'latinAndDigits'=>\Validators\LatinAndDigitsValidator::class,
+        'cyrillic'=>\Validators\CyrillicValidator::class
     ]
 
 ];

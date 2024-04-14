@@ -22,14 +22,16 @@ class Employees
         $select_groups = Group::all();
         if ($request->method === 'POST') {
             $validator = new Validator($request->all(), [
-                'last_name' => ['required:students,last_name'],
-                'name'=>['required:students,first_name'],
+                'last_name' => ['cyrillic','required:students,last_name'],
+                'name'=>['cyrillic','required:students,first_name'],
                 'date' => ['required','currentDate'],
                 'gender' => ['required'],
-                'address' => ['required'],
+                'address' => ['cyrillic','required'],
+                'patronymic'=>['cyrillic:students,patronymic']
             ], [
                 'required' => 'Поле :field пусто',
-                'currentDate'=>'Поле :field некорректно'
+                'currentDate'=>'Поле :field некорректно',
+                'cyrillic' => 'Поле :field должно содержать только кириллические буквы',
             ]);
             if ($validator->fails()) {
                 return new View('employees.add_students',
@@ -78,10 +80,11 @@ class Employees
     {
         if ($request->method === 'POST') {
             $validator = new Validator($request->all(), [
-                'name' => ['required', 'unique:disciplines,name'],
+                'name' => ['required', 'cyrillic','unique:disciplines,name'],
             ], [
                 'required' => 'Поле :field пусто',
-                'unique' => 'Поле :field должно быть уникально'
+                'unique' => 'Поле :field должно быть уникально',
+                'cyrillic' => 'Поле :field должно содержать только кириллические буквы',
             ]);
             if ($validator->fails()) {
                 return new View('employees.add_discipline',
