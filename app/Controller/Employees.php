@@ -103,31 +103,20 @@ class Employees
 
     public function cabinet(Request $request): string
     {
-        $image=Image::all();
-        return new View('employees.cabinet',['image'=>$image]);
-    }
-    public function addImage(Request $request): string
-    {
-        // Проверяем, был ли отправлен POST запрос
+        $images=Image::all();
         if ($request->method === 'POST') {
-            // Получаем файл из запроса
-            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-                $imageFile = $_FILES['image'];
+            $image = $_FILES['image']['name'];
+            $imagePath = $_SERVER['DOCUMENT_ROOT'] . "/pop-it-mvc/public/image/";
+            $uploaded_file = $imagePath . basename($image);
+            move_uploaded_file($_FILES['image']['tmp_name'], $uploaded_file);
 
-
-                $imageContent = file_get_contents($imageFile['tmp_name']);
-
-                // Сохраняем содержимое изображения в базу данных
-                $image = new Image();
-                $image->image = $imageContent;
-                $image->save();
-
-                // После успешного сохранения изображения, перенаправляем пользователя на страницу кабинета
-                return app()->route->redirect('/cabinet');
+            if (Image::create([
+                'image' => $uploaded_file,
+                'name'=>$image])) {
+                app()->route->redirect('/cabinet');
             }
         }
-
-        return new View('employees.add_image');
+        return new View('employees.cabinet',['images'=>$images]);
     }
 
     public function students(Request $request): string
@@ -361,7 +350,7 @@ class Employees
                 $existingGrade = Grade::where('id_disciplines_group', $disciplineGroupId)
                     ->where('id_student', $studentId);
 
-                if ($existingGrade) {
+                if ($existingGrade->exists()) {
                     // Обновление существующей оценки
                     $existingGrade->update([
                         'id_evaluations' => $evaluationId,
