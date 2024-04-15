@@ -15,7 +15,7 @@ use Src\View;
 use Src\Request;
 use Model\User;
 use DateTime;
-error_reporting(0);
+
 
 
 class Employees
@@ -106,6 +106,30 @@ class Employees
         $image=Image::all();
         return new View('employees.cabinet',['image'=>$image]);
     }
+    public function addImage(Request $request): string
+    {
+        // Проверяем, был ли отправлен POST запрос
+        if ($request->method === 'POST') {
+            // Получаем файл из запроса
+            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                $imageFile = $_FILES['image'];
+
+
+                $imageContent = file_get_contents($imageFile['tmp_name']);
+
+                // Сохраняем содержимое изображения в базу данных
+                $image = new Image();
+                $image->image = $imageContent;
+                $image->save();
+
+                // После успешного сохранения изображения, перенаправляем пользователя на страницу кабинета
+                return app()->route->redirect('/cabinet');
+            }
+        }
+
+        return new View('employees.add_image');
+    }
+
     public function students(Request $request): string
     {
         $students=Student::all();
@@ -121,6 +145,7 @@ class Employees
     {
         $message = null;
         $disciplines = [];
+
         if ($request->get('search')) {
             // Получаем параметр поиска из запроса
             $searchTerm = $request->get('search');
@@ -228,18 +253,20 @@ class Employees
     {
         $groupId = $request->id;
         $groupName = Group::find($groupId)->name;
-        $semester = $request->get('semester');
-        $course = $request->get('course');
 
         // Запрос на получение списка дисциплин группы с учетом фильтрации
         $group = DisciplinesGroup::where('id_group', $request->id);
 
-        // Применяем фильтрацию по семестру и курсу
-        if (!empty($semester)) {
-            $group->where('semester', $semester);
-        }
-        if (!empty($course)) {
-            $group->where('course', $course);
+        if($request->method === 'POST'){
+            $semester = $request->get('semester');
+            $course = $request->get('course');
+            if (!empty($semester)) {
+                $group->where('semester', $semester);
+            }
+            if (!empty($course)) {
+                $group->where('course', $course);
+            }
+
         }
         $group = $group->get();
 

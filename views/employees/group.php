@@ -43,6 +43,7 @@
                     <option>2</option>
                 </select>
                 <button type="submit" class="button_ok">Ок</button>
+                <button class="button_ok"><a href="<?php echo app()->route->getUrl('/groups/group?id='.$groupId); ?>">Сбросить</a></button>
             </form>
         </div>
     </div>
