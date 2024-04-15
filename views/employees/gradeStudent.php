@@ -4,6 +4,7 @@
             <?php
             ?>
             <h1>Успеваемость студента - <?=$studentName?></h1>
+            <h4><a href="<?php echo app()->route->getUrl('/student/grade/evaluations?id='.$studentId); ?>">Поставить оценку</a></h4>
             <ul class="discipline_list">
                 <?php $i = 1;
                 foreach ($studentGrade as $studentGrades) :
@@ -43,6 +44,7 @@
             <button type="submit" class="button_ok">Применить</button>
             <button class="button_ok"><a href="<?php echo app()->route->getUrl('/student/grade?id='.$studentId); ?>">Сбросить</a></button>
         </form>
+
     </div>
 </div>
 

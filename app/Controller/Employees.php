@@ -5,6 +5,7 @@ namespace Controller;
 use Model\Control;
 use Model\Discipline;
 use Model\DisciplinesGroup;
+use Model\Evaluations;
 use Model\Grade;
 use Model\Group;
 use Model\Image;
@@ -13,6 +14,8 @@ use Src\Validator\Validator;
 use Src\View;
 use Src\Request;
 use Model\User;
+use DateTime;
+error_reporting(0);
 
 
 class Employees
@@ -298,7 +301,62 @@ class Employees
 
     public function evaluations(Request $request): string
     {
-        return new View('employees.evaluations');
+        $evaluations = Evaluations::all();
+        $studentId = $request->id;
+        $studentInfo = Student::find($studentId);
+        $studentName = $studentInfo->last_name . ' ' . $studentInfo->first_name . ' ' . $studentInfo->patronymic;
+        $groupName = $studentInfo->group->name;
+        $groupId = $studentInfo->group->id;
+        $disciplinesGroup = DisciplinesGroup::where('id_group', $groupId)->get();
+
+        // Получение оценок студента
+        $grades = Grade::where('id_student', $studentId)->get();
+
+        // Проверка наличия оценки у студента по каждой дисциплине
+        $hasGrade = [];
+        foreach ($disciplinesGroup as $disciplineGroup) {
+            $hasGrade[$disciplineGroup->id] = $grades->where('id_disciplines_group', $disciplineGroup->id)->isNotEmpty();
+        }
+
+        $date = new DateTime();
+        if ($request->method === 'POST') {
+            $disciplineGroupId = $request->get('disciplineGroupId');
+            $evaluationName = $request->get('evaluationName');
+            $selectedEvaluation = Evaluations::where('evaluation', $evaluationName)->first();
+
+            if ($selectedEvaluation) {
+                $evaluationId = $selectedEvaluation->id;
+
+                // Проверка, существует ли уже оценка у студента по выбранной дисциплине
+                $existingGrade = Grade::where('id_disciplines_group', $disciplineGroupId)
+                    ->where('id_student', $studentId);
+
+                if ($existingGrade) {
+                    // Обновление существующей оценки
+                    $existingGrade->update([
+                        'id_evaluations' => $evaluationId,
+                        'date' => $date
+                    ]);
+                } else {
+                    // Создание новой оценки
+                    Grade::create([
+                        'id_disciplines_group' => $disciplineGroupId,
+                        'id_student' => $studentId,
+                        'id_evaluations' => $evaluationId,
+                        'date' => $date
+                    ]);
+                }
+            }
+
+            app()->route->redirect('/student/grade?id=' . $studentId);
+        }
+
+        return new View('employees.evaluations', [
+            'disciplinesGroup' => $disciplinesGroup,
+            'studentName' => $studentName,
+            'groupName' => $groupName,
+            'evaluations' => $evaluations,
+        ]);
     }
 
 

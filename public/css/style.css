@@ -577,18 +577,24 @@ li{
     flex-direction: column;
     gap: 20px;
 }
-.fio_student{
+.discipline_student{
     width: 500px;
     height: 60px;
     background-color: #e7e7e7;
-    padding: 23px;
+    padding: 20px;
+}
+.evaluations_form{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
 }
 .evaluations_number{
     display: inline-block;
     width: 60px;
     height: 60px;
     border: 1px solid black;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
 }
 .evaluations_in_group{
@@ -620,7 +626,6 @@ li{
 .evaluations_button{
     display: flex;
     justify-content: center;
-    margin-top: 25px;
 }
 .discipline_in_list{
     display: flex;
