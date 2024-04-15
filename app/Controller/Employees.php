@@ -30,11 +30,12 @@ class Employees
                 'date' => ['required','currentDate'],
                 'gender' => ['required'],
                 'address' => ['cyrillic','required'],
-                'patronymic'=>['cyrillic:students,patronymic']
+                'patronymic'=>['patronymic']
             ], [
                 'required' => 'Поле :field пусто',
                 'currentDate'=>'Поле :field некорректно',
                 'cyrillic' => 'Поле :field должно содержать только кириллические буквы',
+
             ]);
             if ($validator->fails()) {
                 return new View('employees.add_students',
@@ -225,6 +226,24 @@ class Employees
             $group = Group::find($data['group_id']);
             $id_discipline = Discipline::where('name', $data['discipline_names'])->first();
             $id_control = Control::where('name', $data['control_names'])->first();
+
+            $data['id_disciplines']=$id_discipline->id;
+            $data['id_group']=$group->id;
+            $validator = new Validator($data, [
+                'id_disciplines' => ['uniqueDiscipline:'.$data['group_id'],'required'],
+                'control_names'=>['required'],
+                'course'=>['required'],
+                'semester'=>['required'],
+                'num_hours'=>['required'],
+            ], [
+                'required' => 'Поле :field пусто',
+                'uniqueDiscipline' => 'Такая дисциплина уже есть у группы',
+            ]);
+            if($validator->fails()){
+                $group = Group::find($data['group_id']);
+                return new View('employees.add_discipline_in_group',
+                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE), 'group'=>$group]);
+            }
             if ($group && $id_control && $id_discipline) {
                 DisciplinesGroup::create([
                     'id_group' => $group->id,
@@ -240,6 +259,7 @@ class Employees
         $groupName = Group::find($groupId)->name;
         return new View('employees.add_discipline_in_group', ['group' => $group, 'discipline_name'=>$discipline_name,'control_name'=>$control_name, 'groupName' => $groupName, 'groupId' => $groupId, ]);
     }
+
 
     public function group(Request $request): string
     {

@@ -1,18 +1,13 @@
+<?= $message ?? '';?>
 <div class="content_add_discipline_in_group">
     <h2>Добавить дисциплину</h2>
     <form method="post" class="add_discipline_in_group">
         <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
-        <?php if ($group->isNotEmpty()) : ?>
-            <?php $id_group = $group[0]->info_group->id; ?>
-            <input type="hidden" name="group_id" value="<?= $id_group ?>">
-        <?php else : ?>
-            <?php $id_group = $groupId; ?>
-            <input type="hidden" name="group_id" value="<?= $id_group ?>">
-        <?php endif; ?>
+        <input type="hidden" name="group_id" value="<?= $groupId ?>">
         <select name='discipline_names' class="discipline_add_in_group">
             <option value="">Название</option>
-            <?php foreach ($discipline_name as $discipline_names) : ?>
-                <option><?= $discipline_names->name ?></option>
+            <?php foreach ($discipline_name as $discipline) : ?>
+                <option><?= $discipline->name ?></option>
             <?php endforeach; ?>
         </select>
         <select name='semester' class="discipline_add_in_group">
@@ -31,8 +26,8 @@
 
         <select name="control_names" class="discipline_add_in_group">
             <option value="">Вид контроля</option>
-            <?php foreach ($control_name as $control_names) : ?>
-                <option><?= $control_names->name ?></option>
+            <?php foreach ($control_name as $control) : ?>
+                <option><?= $control->name ?></option>
             <?php endforeach; ?>
         </select>
         <select name="num_hours" class="discipline_add_in_group">
