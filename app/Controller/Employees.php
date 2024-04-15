@@ -145,23 +145,26 @@ class Employees
     {
         $message = null;
         $disciplines = [];
+        if($request->method==='POST'){
+            if ($request->get('search')) {
+                // Получаем параметр поиска из запроса
+                $searchTerm = $request->get('search');
 
-        if ($request->get('search')) {
-            // Получаем параметр поиска из запроса
-            $searchTerm = $request->get('search');
+                // Если есть параметр поиска, выполняем поиск
+                if ($searchTerm) {
+                    // Выполняем поиск дисциплин по имени
+                    $disciplines = Discipline::where('name', 'like', '%' . $searchTerm . '%')->get();
+                }
+                if ($disciplines->isEmpty()) {
+                    $message = 'Дисциплины с таким названием отсутствуют';
+                }
 
-            // Если есть параметр поиска, выполняем поиск
-            if ($searchTerm) {
-                // Выполняем поиск дисциплин по имени
-                $disciplines = Discipline::where('name', 'like', '%' . $searchTerm . '%')->get();
             }
-            if ($disciplines->isEmpty()) {
-                $message = 'Дисциплины с таким названием отсутствуют';
-            }
-
-        } else {
+        }
+        else {
             $disciplines = Discipline::all();
         }
+
 
         return new View('employees.disciplines', ['disciplines' => $disciplines, 'message' => $message ?? null]);
     }
