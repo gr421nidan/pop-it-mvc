@@ -14,7 +14,8 @@
         "illuminate/database": "^12.0@dev",
         "illuminate/events": "^12.0@dev",
         "nikic/fast-route": "^2.0@dev",
-        "gr421nidan/collect": "dev-master"
+        "gr421nidan/collect": "dev-master",
+        "gr421nidan/middlewares": "dev-master"
     },
     "autoload": {
         "psr-4": {
