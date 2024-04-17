@@ -51,7 +51,7 @@ class AdminTest extends TestCase
         return [
             ['GET', ['login' => '', 'password' => ''], '<h3></h3>'],
             ['POST', ['login' => '', 'password' => ''], '<h3>{"login":["Поле login пусто","Поле login использует кириллицу"],"password":["Поле password пусто","Пароль должен быть минимум 6 символов","Поле password использует кириллицу"]}</h3>'],
-            ['POST', ['login' => 'dasha1', 'password' => '123456'], '<h3>{"login":["Поле login должно быть уникально"]}</h3>'],
+            ['POST', ['login' => 'dasha', 'password' => '123456'], '<h3>{"login":["Поле login должно быть уникально"]}</h3>'],
             ['POST', ['login' => md5(time()), 'password' => 'admin1'], 'Location: /pop-it-mvc/hello'],
         ];
     }
