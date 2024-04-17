@@ -4,7 +4,7 @@ use Model\User;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-class SiteTest extends TestCase
+class AdminTest extends TestCase
 {
 
     #[DataProvider('additionProvider')]
