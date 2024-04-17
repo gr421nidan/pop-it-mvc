@@ -29,6 +29,7 @@ class Admin
             }
             if(User::create($request->all())) {
                 app()->route->redirect('/hello');
+                return false;
             }
         }
         return new View('admin.add_employees');
