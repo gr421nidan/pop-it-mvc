@@ -26,6 +26,13 @@ return [
         'cyrillic'=>\Validators\CyrillicValidator::class,
         'patronymic'=>\Validators\PatronymicValidator::class,
         'uniqueDiscipline'=>\Validators\UniqueDisciplineValidator::class
-    ]
+    ],
+    'providers' => [
+        'kernel' => \Providers\KernelProvider::class,
+        'route' => \Providers\RouteProvider::class,
+        'db' => \Providers\DBProvider::class,
+        'auth' => \Providers\AuthProvider::class,
+    ],
+
 
 ];
