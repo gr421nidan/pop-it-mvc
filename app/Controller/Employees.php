@@ -30,11 +30,13 @@ class Employees
                 'date' => ['required','currentDate'],
                 'gender' => ['required'],
                 'address' => ['cyrillic','required'],
-                'patronymic'=>['patronymic']
+                'patronymic'=>['patronymic'],
+                'group_id'=>['required'],
             ], [
                 'required' => 'Поле :field пусто',
                 'currentDate'=>'Поле :field некорректно',
                 'cyrillic' => 'Поле :field должно содержать только кириллические буквы',
+                'patronymic'=>'Поле :field должно быть путым, либо сдержать кириллические буквы'
 
             ]);
             if ($validator->fails()) {

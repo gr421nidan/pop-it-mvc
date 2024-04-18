@@ -1,4 +1,4 @@
-<?= $message ?? '';?>
+<h3><?= $message ?? '';?></h3>
 <div class="add_students_content">
     <div class="add_students_content_block">
         <h2>Добавление нового студента</h2>
