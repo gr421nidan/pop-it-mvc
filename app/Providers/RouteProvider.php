@@ -33,6 +33,7 @@ class RouteProvider extends AbstractProvider
 
         //Удаляем обработку json данных
         $this->app->settings->removeAppMiddleware('json');
+        $this->app->settings->removeAppMiddleware('token');
         //Загружаем маршруты из стандартного файла
         require_once __DIR__ . '/../..' . $this->app->settings->getRoutePath() . '/web.php';
 
