@@ -15,6 +15,7 @@ return [
         'specialChars' => \Middlewares\SpecialCharsMiddleware::class,
         'trim' => \Middlewares\TrimMiddleware::class,
         'json' => \Middlewares\JSONMiddleware::class,
+        'token' => \Middlewares\TokenMiddleware::class,
     ],
 
 
