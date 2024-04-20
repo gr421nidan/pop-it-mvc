@@ -11,8 +11,8 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^7.4 | ^8.0",
-        "illuminate/database": "^12.0@dev",
-        "illuminate/events": "^12.0@dev",
+        "illuminate/database": "^10.0@dev",
+        "illuminate/events": "^10.0@dev",
         "nikic/fast-route": "^2.0@dev",
         "gr421nidan/collect": "dev-master",
         "gr421nidan/middlewares": "dev-master"
@@ -24,6 +24,6 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^11.2@dev"
+        "phpunit/phpunit": "*"
     }
 }

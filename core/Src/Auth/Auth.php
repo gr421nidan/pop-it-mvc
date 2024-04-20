@@ -21,6 +21,7 @@ class Auth
     //Вход пользователя по модели
     public static function login(IdentityInterface $user): void
     {
+        //var_dump($user->getId());
         self::$user = $user;
         Session::set('id', self::$user->getId());
     }
@@ -72,6 +73,7 @@ class Auth
     }
     public static function tokenCheck(): bool
     {
+
         if (self::user()->token){
             return true;
         }
